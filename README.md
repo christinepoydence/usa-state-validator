@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/usa-state-validator.svg)](https://badge.fury.io/js/usa-state-validator)
 [![Known Vulnerabilities](https://snyk.io/test/github/christinepoydence/usa-state-validator/badge.svg?targetFile=package.json)](https://snyk.io/test/github/christinepoydence/usa-state-validator?targetFile=package.json)
-
+[![Build Status](https://travis-ci.com/christinepoydence/usa-state-validator.svg?branch=main)](https://travis-ci.com/christinepoydence/usa-state-validator)
 
 # usa-state-validator
 
