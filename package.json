@@ -8,7 +8,7 @@
     "test": "jest",
     "lint": "eslint *.js ",
     "lintfix": "eslint ** --fix",
-    "coveralls": "jest --coverage"
+    "coveralls": "jest --coverage && coveralls < coverage/lcov.info"
   },
   "author": "Christine Poydence",
   "license": "ISC",
