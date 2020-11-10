@@ -79,3 +79,25 @@ usaStateValidator.isValidStateAbbreviation('O H') // false
 usaStateValidator.isValidStateAbbreviation('notAState') // false
 usaStateValidator.isValidStateAbbreviation(undefined) // false
 ```
+
+### retrieveStateInformation(textInput)
+
+This method accepts an input value and returns the formatted state name and abbreviation as a JSON object if the input is a valid USA state abbreviation or name. It will:
+- return the formatted object regardless of the case of the input
+- return an empty object if the input is not a string
+- return the formatted object if the input has leading or trailing spaces
+
+```javascript
+const usaStateValidator = require("usa-state-validator")
+
+usaStateValidator.retrieveStateInformation('oh') //returns {abbreviation: "OH", name: "Ohio" }
+usaStateValidator.retrieveStateInformation('OH') //returns {abbreviation: "OH", name: "Ohio" }
+usaStateValidator.retrieveStateInformation(' OH ') //returns {abbreviation: "OH", name: "Ohio" }
+usaStateValidator.retrieveStateInformation('OHIO') //returns {abbreviation: "OH", name: "Ohio" }
+usaStateValidator.retrieveStateInformation('ohio') //returns {abbreviation: "OH", name: "Ohio" }
+usaStateValidator.retrieveStateInformation('Ohio') //returns {abbreviation: "OH", name: "Ohio" }
+usaStateValidator.retrieveStateInformation('  Ohio') //returns {abbreviation: "OH", name: "Ohio" }
+usaStateValidator.retrieveStateInformation('O H') //returns {}
+usaStateValidator.retrieveStateInformation('notAState') //returns {}
+usaStateValidator.retrieveStateInformation(undefined) //returns {}
+```
