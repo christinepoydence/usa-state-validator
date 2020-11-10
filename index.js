@@ -1,6 +1,6 @@
 'use strict';
 
-const stateInformation = require('../data/usa_states.json');
+const stateInformation = require('./data/usa_states.json');
 
 const isValidStateAbbreviation = (stateAbbreviation) => {
     if (typeof stateAbbreviation === 'string' || stateAbbreviation instanceof String){
