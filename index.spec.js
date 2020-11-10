@@ -1,7 +1,8 @@
 const {
     isValidStateAbbreviation,
     isValidStateName,
-    isValidStateInput
+    isValidStateInput,
+    retrieveStateInformation
 } = require('./index');
 
 describe('isValidStateAbbreviation', () => {
@@ -75,6 +76,37 @@ describe('isValidStateInput', () => {
     it('should return false when the input is not a valid abbreviation or name for a state in the USA', () => {
         const result =  isValidStateInput("turtle");
         expect(result).toEqual(false);
+    });
+    
+});
+
+describe('retrieveStateInformation', () => {
+    it('should return the state information when the input is a valid name for a state in the USA', () => {
+        const result =  retrieveStateInformation("Ohio");
+        expect(result).toEqual(
+            {
+                abbreviation: "OH",
+                name: "Ohio"
+            });
+    });
+    it('should return  the state information when the input is a valid abbreviation for a state in the USA', () => {
+        const result =  retrieveStateInformation("TX");
+        expect(result).toEqual(
+            {
+                abbreviation: "TX",
+                name: "Texas"
+            }
+        );
+    });
+
+    it('should return an empty object when the input is not a valid abbreviation or name for a state in the USA', () => {
+        const result =  retrieveStateInformation("turtle");
+        expect(result).toEqual({});
+    });
+
+    it('should return an empty object if the input is undefined', () => {
+        const result = retrieveStateInformation(undefined);
+        expect(result).toEqual({});
     });
     
 });

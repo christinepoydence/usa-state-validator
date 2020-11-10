@@ -15,6 +15,13 @@ npm install usa-state-validator
 
 ## Usage
 
+### isValidStateInput(textInput)
+
+This method accepts an input value and returns true if the input is a valid USA state name or abbreviation. It will:
+- return true regardless of case
+- return false if the input is not a string
+- return true if the input has leading or trailing spaces
+
 ```javascript
 const usaStateValidator = require("usa-state-validator")
 
@@ -26,4 +33,49 @@ usaStateValidator.isValidStateInput('  Ohio') // true
 usaStateValidator.isValidStateInput('Oh io') // false
 usaStateValidator.isValidStateInput('notAState') // false
 usaStateValidator.isValidStateInput(undefined) // false
+```
+
+### isValidStateName(textInput)
+
+This method accepts an input value and returns true if the input is a valid USA state name. It will:
+- return true regardless of case
+- return false if the input is not a string
+- return true if the input has leading or trailing spaces
+- return false if the input is a state abbreviation
+
+```javascript
+const usaStateValidator = require("usa-state-validator")
+
+usaStateValidator.isValidStateName('OHIO') // true
+usaStateValidator.isValidStateName('ohio') // true
+usaStateValidator.isValidStateName('Ohio') // true
+usaStateValidator.isValidStateName('  Ohio') // true
+usaStateValidator.isValidStateName('oh') // false
+usaStateValidator.isValidStateName('OH') // false
+usaStateValidator.isValidStateName('Oh io') // false
+usaStateValidator.isValidStateName('notAState') // false
+usaStateValidator.isValidStateName(undefined) // false
+```
+
+### isValidStateAbbreviation(textInput)
+
+This method accepts an input value and returns true if the input is a valid USA state abbreviation. It will:
+- return true regardless of case
+- return false if the input is not a string
+- return true if the input has leading or trailing spaces
+- return false if the input is a state name
+
+```javascript
+const usaStateValidator = require("usa-state-validator")
+
+usaStateValidator.isValidStateAbbreviation('oh') // true
+usaStateValidator.isValidStateAbbreviation('OH') // true
+usaStateValidator.isValidStateAbbreviation(' OH ') // true
+usaStateValidator.isValidStateAbbreviation('OHIO') // false
+usaStateValidator.isValidStateAbbreviation('ohio') // false
+usaStateValidator.isValidStateAbbreviation('Ohio') // false
+usaStateValidator.isValidStateAbbreviation('  Ohio') // false
+usaStateValidator.isValidStateAbbreviation('O H') // false
+usaStateValidator.isValidStateAbbreviation('notAState') // false
+usaStateValidator.isValidStateAbbreviation(undefined) // false
 ```
