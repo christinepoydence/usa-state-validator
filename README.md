@@ -21,6 +21,7 @@ This method accepts an input value and returns true if the input is a valid USA 
 - return true regardless of case
 - return false if the input is not a string
 - return true if the input has leading or trailing spaces
+- return false if the input is not a state abbreviation or a state name
 
 ```javascript
 const {isValidStateInput} = require("usa-state-validator")
@@ -41,7 +42,7 @@ This method accepts an input value and returns true if the input is a valid USA 
 - return true regardless of case
 - return false if the input is not a string
 - return true if the input has leading or trailing spaces
-- return false if the input is a state abbreviation
+- return false if the input is not a state abbreviation
 
 ```javascript
 const {isValidStateName} = require("usa-state-validator")
@@ -63,7 +64,7 @@ This method accepts an input value and returns true if the input is a valid USA 
 - return true regardless of case
 - return false if the input is not a string
 - return true if the input has leading or trailing spaces
-- return false if the input is a state name
+- return false if the input is not a state name
 
 ```javascript
 const {isValidStateAbbreviation} = require("usa-state-validator")
@@ -84,7 +85,7 @@ isValidStateAbbreviation(undefined) // false
 
 This method accepts an input value and returns the formatted state name and abbreviation as a JSON object if the input is a valid USA state abbreviation or name. It will:
 - return the formatted object regardless of the case of the input
-- return an empty object if the input is not a string
+- return null if the input is not a string or if the input is not a valid state name or abbreviation
 - return the formatted object if the input has leading or trailing spaces
 
 ```javascript
@@ -97,7 +98,7 @@ retrieveStateInformation('OHIO') //returns {abbreviation: "OH", name: "Ohio" }
 retrieveStateInformation('ohio') //returns {abbreviation: "OH", name: "Ohio" }
 retrieveStateInformation('Ohio') //returns {abbreviation: "OH", name: "Ohio" }
 retrieveStateInformation('  Ohio') //returns {abbreviation: "OH", name: "Ohio" }
-retrieveStateInformation('O H') //returns {}
-retrieveStateInformation('notAState') //returns {}
-retrieveStateInformation(undefined) //returns {}
+retrieveStateInformation('O H') //returns null
+retrieveStateInformation('notAState') //returns null
+retrieveStateInformation(undefined) //returns null
 ```

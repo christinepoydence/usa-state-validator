@@ -79,11 +79,11 @@ describe('retrieveStateInformation', () => {
         },
         {
             input: "turtle",
-            expectedResult:  {}
+            expectedResult:  null
         },
         {
             input: undefined,
-            expectedResult:  {}
+            expectedResult:  null
         }
     ]
     test.each(stateInformationData)('isValidStateInput, isValidStateAbbreviation and isValidStateName successfully determine if the state abbreviation is valid',(data) =>{
