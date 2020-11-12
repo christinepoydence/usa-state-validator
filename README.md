@@ -23,16 +23,16 @@ This method accepts an input value and returns true if the input is a valid USA 
 - return true if the input has leading or trailing spaces
 
 ```javascript
-const usaStateValidator = require("usa-state-validator")
+const {isValidStateInput} = require("usa-state-validator")
 
-usaStateValidator.isValidStateInput('OH') // true
-usaStateValidator.isValidStateInput('oh') // true
-usaStateValidator.isValidStateInput('Ohio') // true
-usaStateValidator.isValidStateInput('ohio') // true
-usaStateValidator.isValidStateInput('  Ohio') // true
-usaStateValidator.isValidStateInput('Oh io') // false
-usaStateValidator.isValidStateInput('notAState') // false
-usaStateValidator.isValidStateInput(undefined) // false
+isValidStateInput('OH') // true
+isValidStateInput('oh') // true
+isValidStateInput('Ohio') // true
+isValidStateInput('ohio') // true
+isValidStateInput('  Ohio') // true
+isValidStateInput('Oh io') // false
+isValidStateInput('notAState') // false
+isValidStateInput(undefined) // false
 ```
 
 ### isValidStateName(textInput)
@@ -44,17 +44,17 @@ This method accepts an input value and returns true if the input is a valid USA 
 - return false if the input is a state abbreviation
 
 ```javascript
-const usaStateValidator = require("usa-state-validator")
+const {isValidStateName} = require("usa-state-validator")
 
-usaStateValidator.isValidStateName('OHIO') // true
-usaStateValidator.isValidStateName('ohio') // true
-usaStateValidator.isValidStateName('Ohio') // true
-usaStateValidator.isValidStateName('  Ohio') // true
-usaStateValidator.isValidStateName('oh') // false
-usaStateValidator.isValidStateName('OH') // false
-usaStateValidator.isValidStateName('Oh io') // false
-usaStateValidator.isValidStateName('notAState') // false
-usaStateValidator.isValidStateName(undefined) // false
+isValidStateName('OHIO') // true
+isValidStateName('ohio') // true
+isValidStateName('Ohio') // true
+isValidStateName('  Ohio') // true
+isValidStateName('oh') // false
+isValidStateName('OH') // false
+isValidStateName('Oh io') // false
+isValidStateName('notAState') // false
+isValidStateName(undefined) // false
 ```
 
 ### isValidStateAbbreviation(textInput)
@@ -66,18 +66,18 @@ This method accepts an input value and returns true if the input is a valid USA 
 - return false if the input is a state name
 
 ```javascript
-const usaStateValidator = require("usa-state-validator")
+const {isValidStateAbbreviation} = require("usa-state-validator")
 
-usaStateValidator.isValidStateAbbreviation('oh') // true
-usaStateValidator.isValidStateAbbreviation('OH') // true
-usaStateValidator.isValidStateAbbreviation(' OH ') // true
-usaStateValidator.isValidStateAbbreviation('OHIO') // false
-usaStateValidator.isValidStateAbbreviation('ohio') // false
-usaStateValidator.isValidStateAbbreviation('Ohio') // false
-usaStateValidator.isValidStateAbbreviation('  Ohio') // false
-usaStateValidator.isValidStateAbbreviation('O H') // false
-usaStateValidator.isValidStateAbbreviation('notAState') // false
-usaStateValidator.isValidStateAbbreviation(undefined) // false
+isValidStateAbbreviation('oh') // true
+isValidStateAbbreviation('OH') // true
+isValidStateAbbreviation(' OH ') // true
+isValidStateAbbreviation('OHIO') // false
+isValidStateAbbreviation('ohio') // false
+isValidStateAbbreviation('Ohio') // false
+isValidStateAbbreviation('  Ohio') // false
+isValidStateAbbreviation('O H') // false
+isValidStateAbbreviation('notAState') // false
+isValidStateAbbreviation(undefined) // false
 ```
 
 ### retrieveStateInformation(textInput)
@@ -88,16 +88,16 @@ This method accepts an input value and returns the formatted state name and abbr
 - return the formatted object if the input has leading or trailing spaces
 
 ```javascript
-const usaStateValidator = require("usa-state-validator")
+const {retrieveStateInformation} = require("usa-state-validator")
 
-usaStateValidator.retrieveStateInformation('oh') //returns {abbreviation: "OH", name: "Ohio" }
-usaStateValidator.retrieveStateInformation('OH') //returns {abbreviation: "OH", name: "Ohio" }
-usaStateValidator.retrieveStateInformation(' OH ') //returns {abbreviation: "OH", name: "Ohio" }
-usaStateValidator.retrieveStateInformation('OHIO') //returns {abbreviation: "OH", name: "Ohio" }
-usaStateValidator.retrieveStateInformation('ohio') //returns {abbreviation: "OH", name: "Ohio" }
-usaStateValidator.retrieveStateInformation('Ohio') //returns {abbreviation: "OH", name: "Ohio" }
-usaStateValidator.retrieveStateInformation('  Ohio') //returns {abbreviation: "OH", name: "Ohio" }
-usaStateValidator.retrieveStateInformation('O H') //returns {}
-usaStateValidator.retrieveStateInformation('notAState') //returns {}
-usaStateValidator.retrieveStateInformation(undefined) //returns {}
+retrieveStateInformation('oh') //returns {abbreviation: "OH", name: "Ohio" }
+retrieveStateInformation('OH') //returns {abbreviation: "OH", name: "Ohio" }
+retrieveStateInformation(' OH ') //returns {abbreviation: "OH", name: "Ohio" }
+retrieveStateInformation('OHIO') //returns {abbreviation: "OH", name: "Ohio" }
+retrieveStateInformation('ohio') //returns {abbreviation: "OH", name: "Ohio" }
+retrieveStateInformation('Ohio') //returns {abbreviation: "OH", name: "Ohio" }
+retrieveStateInformation('  Ohio') //returns {abbreviation: "OH", name: "Ohio" }
+retrieveStateInformation('O H') //returns {}
+retrieveStateInformation('notAState') //returns {}
+retrieveStateInformation(undefined) //returns {}
 ```

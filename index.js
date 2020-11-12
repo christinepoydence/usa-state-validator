@@ -31,7 +31,7 @@ const retrieveStateInformation = (textInput) => {
         }
     }
     return {};
-}
+};
 
 module.exports = {
     isValidStateAbbreviation,
