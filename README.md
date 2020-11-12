@@ -2,6 +2,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/christinepoydence/usa-state-validator/badge.svg?targetFile=package.json)](https://snyk.io/test/github/christinepoydence/usa-state-validator?targetFile=package.json)
 [![Build Status](https://travis-ci.com/christinepoydence/usa-state-validator.svg?branch=main)](https://travis-ci.com/christinepoydence/usa-state-validator)
 [![Coverage Status](https://coveralls.io/repos/github/christinepoydence/usa-state-validator/badge.svg?branch=main)](https://coveralls.io/github/christinepoydence/usa-state-validator?branch=main)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9a20c5845486a5285fd5/maintainability)](https://codeclimate.com/github/christinepoydence/usa-state-validator/maintainability)
 
 # usa-state-validator
 
