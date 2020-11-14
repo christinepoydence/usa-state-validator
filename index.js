@@ -2,13 +2,32 @@
 
 const stateInformation = require('./data/usa_states.json');
 
+const retrieveStateInformationConditionally = (textInput, condition= null) => {
+    if (typeof textInput === 'string' || textInput instanceof String){
+        const formattedInput = textInput.trim().toUpperCase();
+        let stateObject = null;
+        if(condition){
+            stateObject = stateInformation.find(state => formattedInput === state[condition].toUpperCase());
+        }else{
+            stateObject = stateInformation.find(state => formattedInput === state.name.toUpperCase() || formattedInput === state.abbreviation.toUpperCase() || formattedInput === state.capital.toUpperCase());
+        }   
+        if(stateObject){
+            return stateObject;
+        }
+    }
+    return null;
+}
 
 const isValidStateAbbreviation = (stateAbbreviation) => {
-    return !!retrieveStateInformation(stateAbbreviation);
+    return !!retrieveStateInformationConditionally(stateAbbreviation, 'abbreviation');
+};
+
+const isValidStateCapital= (stateCapital) => {
+    return !!retrieveStateInformationConditionally(stateCapital, 'capital');
 };
 
 const isValidStateName = (stateName) => {
-    return !!retrieveStateInformation(stateName)
+    return !!retrieveStateInformationConditionally(stateName, 'name');
 };
 
 const isValidStateInput = (textInput) => {
@@ -16,18 +35,13 @@ const isValidStateInput = (textInput) => {
 };
 
 const retrieveStateInformation = (textInput) => {
-    if (typeof textInput === 'string' || textInput instanceof String){
-        const stateObject = stateInformation.find(state => textInput.trim().toUpperCase() === state.name.toUpperCase() || textInput.trim().toUpperCase() === state.abbreviation.toUpperCase());
-        if(stateObject){
-            return stateObject;
-        }
-    }
-    return null;
+   return retrieveStateInformationConditionally(textInput);
 };
 
 module.exports = {
     isValidStateAbbreviation,
     isValidStateName,
     isValidStateInput,
-    retrieveStateInformation
+    retrieveStateInformation,
+    isValidStateCapital
 };

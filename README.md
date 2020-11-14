@@ -65,7 +65,7 @@ This method accepts an input value and returns true if the input is a valid USA 
 - return true regardless of case
 - return false if the input is not a string
 - return true if the input has leading or trailing spaces
-- return false if the input is not a state name
+- return false if the input is not a state abbreviation
 
 ```javascript
 const {isValidStateAbbreviation} = require("usa-state-validator")
@@ -82,9 +82,31 @@ isValidStateAbbreviation('notAState') // false
 isValidStateAbbreviation(undefined) // false
 ```
 
+### isValidStateCapital(textInput)
+
+This method accepts an input value and returns true if the input is a valid USA state capital. It will:
+- return true regardless of case
+- return false if the input is not a string
+- return true even if the input has leading or trailing spaces
+- return false if the input is not a state capital
+
+```javascript
+const {isValidStateAbbreviation} = require("usa-state-validator")
+
+isValidStateCapital('columbus') // true
+isValidStateCapital('COLUMBUS') // true
+isValidStateCapital(' Columbus ') // true
+isValidStateCapital('OHIO') // false
+isValidStateCapital('ohio') // false
+isValidStateCapital('Ohio') // false
+isValidStateCapital('Col umbus') // false
+isValidStateCapital('notACapital') // false
+isValidStateCapital(undefined) // false
+```
+
 ### retrieveStateInformation(textInput)
 
-This method accepts an input value and returns the formatted state name and abbreviation as a JSON object if the input is a valid USA state abbreviation or name. It will:
+This method accepts an input value of a state name, abbreviation, or capital city and returns the formatted state name, capital, and abbreviation as a JSON object if the input is a valid USA state abbreviation or name. It will:
 - return the formatted object regardless of the case of the input
 - return null if the input is not a string or if the input is not a valid state name or abbreviation
 - return the formatted object if the input has leading or trailing spaces
@@ -92,13 +114,13 @@ This method accepts an input value and returns the formatted state name and abbr
 ```javascript
 const {retrieveStateInformation} = require("usa-state-validator")
 
-retrieveStateInformation('oh') //returns {abbreviation: "OH", name: "Ohio" }
-retrieveStateInformation('OH') //returns {abbreviation: "OH", name: "Ohio" }
-retrieveStateInformation(' OH ') //returns {abbreviation: "OH", name: "Ohio" }
-retrieveStateInformation('OHIO') //returns {abbreviation: "OH", name: "Ohio" }
-retrieveStateInformation('ohio') //returns {abbreviation: "OH", name: "Ohio" }
-retrieveStateInformation('Ohio') //returns {abbreviation: "OH", name: "Ohio" }
-retrieveStateInformation('  Ohio') //returns {abbreviation: "OH", name: "Ohio" }
+retrieveStateInformation('oh') //returns {abbreviation: "OH", name: "Ohio", capital: "Columbus" }
+retrieveStateInformation('OH') //returns {abbreviation: "OH", name: "Ohio", capital: "Columbus" }
+retrieveStateInformation(' OH ') //returns {abbreviation: "OH", name: "Ohio", capital: "Columbus" }
+retrieveStateInformation('OHIO') //returns {abbreviation: "OH", name: "Ohio", capital: "Columbus" }
+retrieveStateInformation('ohio') //returns {abbreviation: "OH", name: "Ohio", capital: "Columbus" }
+retrieveStateInformation('Ohio') //returns {abbreviation: "OH", name: "Ohio", capital: "Columbus" }
+retrieveStateInformation('  Ohio') //returns {abbreviation: "OH", name: "Ohio", capital: "Columbus" }
 retrieveStateInformation('O H') //returns null
 retrieveStateInformation('notAState') //returns null
 retrieveStateInformation(undefined) //returns null

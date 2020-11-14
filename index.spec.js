@@ -2,7 +2,8 @@ const {
     isValidStateAbbreviation,
     isValidStateName,
     isValidStateInput,
-    retrieveStateInformation
+    retrieveStateInformation,
+    isValidStateCapital
 } = require('./index');
 
 describe('isValidStateAbbreviation, isValidStateInput, isValidStateName', () => {
@@ -11,42 +12,48 @@ describe('isValidStateAbbreviation, isValidStateInput, isValidStateName', () => 
         {
             input: {
                 abbr: 'TX',
-                name: 'Texas'
+                name: 'Texas',
+                capital: 'Austin'
             },
             expectedResult: true
         },
         {
             input: {
                 abbr: 'InvalidAbbr',
-                name: 'InvalidState'
+                name: 'InvalidState',
+                capital: 'InvalidCapital'
             },
             expectedResult: false
         },
         {
             input: {
                 abbr: 123,
-                name: 123
+                name: 123,
+                capital: 123
             },
             expectedResult: false
         },
         {
             input: {
                 abbr: undefined,
-                name: undefined
+                name: undefined,
+                capital: undefined
             },
             expectedResult: false
         },
         {
             input: {
                 abbr: '  TX  ',
-                name: '  Texas  '
+                name: '  Texas  ',
+                capital: ' Austin '
             },
             expectedResult: true
         },
         {
             input: {
                 abbr: 'tx',
-                name: 'texas'
+                name: 'texas',
+                capital: 'austin'
             },
             expectedResult: true
         }
@@ -57,6 +64,7 @@ describe('isValidStateAbbreviation, isValidStateInput, isValidStateName', () => 
         expect(isValidStateName(data.input.name)).toEqual(data.expectedResult);
         expect(isValidStateInput(data.input.abbr)).toEqual(data.expectedResult);
         expect(isValidStateInput(data.input.name)).toEqual(data.expectedResult);
+        expect(isValidStateCapital(data.input.capital)).toEqual(data.expectedResult);
     });
 });
 
@@ -67,14 +75,16 @@ describe('retrieveStateInformation', () => {
             input: "Ohio",
             expectedResult:  {
                 abbreviation: "OH",
-                name: "Ohio"
+                name: "Ohio",
+                capital: "Columbus"
             }
         },
         {
             input: "ME",
             expectedResult:  {
                 abbreviation: "ME",
-                name: "Maine"
+                name: "Maine",
+                capital: "Augusta"
             }
         },
         {
