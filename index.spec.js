@@ -95,7 +95,7 @@ describe('retrieveStateInformation', () => {
             input: undefined,
             expectedResult:  null
         }
-    ]
+    ];
     test.each(stateInformationData)('isValidStateInput, isValidStateAbbreviation and isValidStateName successfully determine if the state abbreviation is valid',(data) =>{
         expect(retrieveStateInformation(data.input)).toEqual(data.expectedResult);
     });

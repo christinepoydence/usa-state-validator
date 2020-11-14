@@ -16,7 +16,7 @@ const retrieveStateInformationConditionally = (textInput, condition= null) => {
         }
     }
     return null;
-}
+};
 
 const isValidStateAbbreviation = (stateAbbreviation) => {
     return !!retrieveStateInformationConditionally(stateAbbreviation, 'abbreviation');
@@ -35,7 +35,7 @@ const isValidStateInput = (textInput) => {
 };
 
 const retrieveStateInformation = (textInput) => {
-   return retrieveStateInformationConditionally(textInput);
+    return retrieveStateInformationConditionally(textInput);
 };
 
 module.exports = {
