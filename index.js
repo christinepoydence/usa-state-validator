@@ -5,17 +5,13 @@ const stateInformation = require('./data/usa_states.json');
 const retrieveStateInformationConditionally = (textInput, condition= null) => {
     if (typeof textInput === 'string' || textInput instanceof String){
         const formattedInput = textInput.trim().toUpperCase();
-        let stateObject = null;
         if(condition){
-            stateObject = stateInformation.find(state => formattedInput === state[condition].toUpperCase());
+            return stateInformation.find(state => formattedInput === state[condition].toUpperCase());
         }else{
-            stateObject = stateInformation.find(state => formattedInput === state.name.toUpperCase() || formattedInput === state.abbreviation.toUpperCase() || formattedInput === state.capital.toUpperCase());
+            return stateInformation.find(state => formattedInput === state.name.toUpperCase() || formattedInput === state.abbreviation.toUpperCase() || formattedInput === state.capital.toUpperCase());
         }   
-        if(stateObject){
-            return stateObject;
-        }
     }
-    return null;
+    return undefined;
 };
 
 const isValidStateAbbreviation = (stateAbbreviation) => {
@@ -35,7 +31,8 @@ const isValidStateInput = (textInput) => {
 };
 
 const retrieveStateInformation = (textInput) => {
-    return retrieveStateInformationConditionally(textInput);
+    const result = retrieveStateInformationConditionally(textInput)
+    return result ? result : null;
 };
 
 module.exports = {
