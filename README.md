@@ -125,3 +125,33 @@ retrieveStateInformation('O H') //returns null
 retrieveStateInformation('notAState') //returns null
 retrieveStateInformation(undefined) //returns null
 ```
+
+### retrieveStateCapitalByName(stateName)
+
+This method accepts an input value of a state name and returns the formatted capital as a String. It will:
+- return the formatted object regardless of the case of the input
+- return null if the input is not a string or if the input is not a valid state name
+- return the formatted capital if the input has leading or trailing spaces
+
+```javascript
+const {retrieveStateInformation} = require("usa-state-validator")
+
+retrieveStateCapitalByName('Ohio') //returns "Columbus"
+retrieveStateCapitalByName('notAState') //returns null
+retrieveStateCapitalByName(undefined) //returns null
+```
+
+### retrieveStateNameByCapital(stateName)
+
+This method accepts an input value of a state capital and returns the formatted state name as a String. It will:
+- return the formatted object regardless of the case of the input
+- return null if the input is not a string or if the input is not a valid state capital
+- return the formatted capital if the input has leading or trailing spaces
+
+```javascript
+const {retrieveStateInformation} = require("usa-state-validator")
+
+retrieveStateNameByCapital('Columbus') //returns "Ohio"
+retrieveStateNameByCapital('notAState') //returns null
+retrieveStateNameByCapital(undefined) //returns null
+```

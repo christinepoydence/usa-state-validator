@@ -1,6 +1,6 @@
 {
   "name": "usa-state-validator",
-  "version": "1.0.4",
+  "version": "1.0.",
   "description": "Given a USA state name or abbreviation, this package will tell you if the input is valid.",
   "repository": "https://github.com/christinepoydence/usa-state-validator.git",
   "main": "index.js",

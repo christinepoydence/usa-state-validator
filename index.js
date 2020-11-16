@@ -31,8 +31,18 @@ const isValidStateInput = (textInput) => {
 };
 
 const retrieveStateInformation = (textInput) => {
-    const result = retrieveStateInformationConditionally(textInput)
+    const result = retrieveStateInformationConditionally(textInput);
     return result ? result : null;
+};
+
+const retrieveStateCapitalByName = (stateName) => {
+    const result = retrieveStateInformationConditionally(stateName, 'name');
+    return result ? result.capital : null;
+};
+
+const retrieveStateNameByCapital = (stateCapital) => {
+    const result = retrieveStateInformationConditionally(stateCapital, 'capital');
+    return result ? result.name : null;
 };
 
 module.exports = {
@@ -40,5 +50,7 @@ module.exports = {
     isValidStateName,
     isValidStateInput,
     retrieveStateInformation,
-    isValidStateCapital
+    isValidStateCapital,
+    retrieveStateCapitalByName,
+    retrieveStateNameByCapital
 };

@@ -3,10 +3,12 @@ const {
     isValidStateName,
     isValidStateInput,
     retrieveStateInformation,
-    isValidStateCapital
+    isValidStateCapital,
+    retrieveStateCapitalByName,
+    retrieveStateNameByCapital
 } = require('./index');
 
-describe('isValidStateAbbreviation, isValidStateInput, isValidStateName', () => {
+describe('isValidStateAbbreviation, isValidStateInput, isValidStateName, isValidStateCapital', () => {
 
     const stateData = [
         {
@@ -59,7 +61,7 @@ describe('isValidStateAbbreviation, isValidStateInput, isValidStateName', () => 
         }
     ];
   
-    test.each(stateData)('isValidStateInput, isValidStateAbbreviation and isValidStateName successfully determine if the state abbreviation is valid',(data) =>{
+    test.each(stateData)('isValidStateInput, isValidStateAbbreviation, isValidStateCapital and isValidStateName successfully determine if the state abbreviation is valid',(data) =>{
         expect(isValidStateAbbreviation(data.input.abbr)).toEqual(data.expectedResult);
         expect(isValidStateName(data.input.name)).toEqual(data.expectedResult);
         expect(isValidStateInput(data.input.abbr)).toEqual(data.expectedResult);
@@ -73,31 +75,52 @@ describe('retrieveStateInformation', () => {
     const stateInformationData = [
         {
             input: "Ohio",
-            expectedResult:  {
+            expectedResult: { info: {
                 abbreviation: "OH",
                 name: "Ohio",
                 capital: "Columbus"
+            },
+            state: null,
+            capital: "Columbus"
             }
         },
         {
             input: "ME",
             expectedResult:  {
-                abbreviation: "ME",
-                name: "Maine",
-                capital: "Augusta"
+                info: {
+                    abbreviation: "ME",
+                    name: "Maine",
+                    capital: "Augusta"
+                },
+                state: null,
+                capital: null
+            }
+        },
+        {
+            input: "Augusta",
+            expectedResult:  {
+                info: {
+                    abbreviation: "ME",
+                    name: "Maine",
+                    capital: "Augusta"
+                },
+                state: "Maine",
+                capital: null
             }
         },
         {
             input: "turtle",
-            expectedResult:  null
+            expectedResult:  {info: null, state: null, capital: null}
         },
         {
             input: undefined,
-            expectedResult:  null
+            expectedResult:  {info: null, state: null, capital: null}
         }
     ];
     test.each(stateInformationData)('isValidStateInput, isValidStateAbbreviation and isValidStateName successfully determine if the state abbreviation is valid',(data) =>{
-        expect(retrieveStateInformation(data.input)).toEqual(data.expectedResult);
+        expect(retrieveStateInformation(data.input)).toEqual(data.expectedResult.info);
+        expect(retrieveStateCapitalByName(data.input)).toEqual(data.expectedResult.capital);
+        expect(retrieveStateNameByCapital(data.input)).toEqual(data.expectedResult.state);
     });
     
 });
