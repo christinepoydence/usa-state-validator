@@ -91,7 +91,7 @@ This method accepts an input value and returns true if the input is a valid USA 
 - return false if the input is not a state capital
 
 ```javascript
-const {isValidStateAbbreviation} = require("usa-state-validator")
+const {isValidStateCapital} = require("usa-state-validator")
 
 isValidStateCapital('columbus') // true
 isValidStateCapital('COLUMBUS') // true
@@ -134,7 +134,7 @@ This method accepts an input value of a state name and returns the formatted cap
 - return the formatted capital if the input has leading or trailing spaces
 
 ```javascript
-const {retrieveStateInformation} = require("usa-state-validator")
+const {retrieveStateCapitalByName} = require("usa-state-validator")
 
 retrieveStateCapitalByName('Ohio') //returns "Columbus"
 retrieveStateCapitalByName('notAState') //returns null
@@ -149,7 +149,7 @@ This method accepts an input value of a state capital and returns the formatted 
 - return the formatted capital if the input has leading or trailing spaces
 
 ```javascript
-const {retrieveStateInformation} = require("usa-state-validator")
+const {retrieveStateNameByCapital} = require("usa-state-validator")
 
 retrieveStateNameByCapital('Columbus') //returns "Ohio"
 retrieveStateNameByCapital('notAState') //returns null
